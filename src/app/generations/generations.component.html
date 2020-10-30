@@ -1,1 +1,3 @@
-<p>generations works!</p>
+<div *ngFor="let generation of generations">
+  <a [href]="generation.url">{{ adjustGenerationName(generation.name) }}</a>
+</div>

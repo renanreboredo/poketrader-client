@@ -1,0 +1,22 @@
+<div *ngFor="let pokemon of pokemons">
+  <button (click)="addToPlayer(1, pokemon)">You</button>
+  <button (click)="addToPlayer(2, pokemon)">Other Player</button>
+  <img [src]="pokemon.sprite">
+  <div>Name: {{ pokemon.name | titlecase }}</div>
+  <div>Base Experience {{ pokemon.baseExperience }}</div>
+</div>
+
+<div>
+  Selected Player 1
+  <div>
+    <div *ngFor="let pokemon of selectedPokemonsP1">
+  <img [src]="pokemon.sprite">
+    </div>
+  </div>
+  Selected Player 2
+  <div>
+    <div *ngFor="let pokemon of selectedPokemonsP2">
+  <img [src]="pokemon.sprite">
+    </div>
+  </div>
+</div>

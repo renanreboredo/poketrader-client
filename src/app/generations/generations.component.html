@@ -1,3 +1,3 @@
 <div *ngFor="let generation of generations">
-  <a [href]="generation.url">{{ adjustGenerationName(generation.name) }}</a>
+  <a [routerLink]="['/generation', generation.id]">{{ adjustGenerationName(generation.name) }}</a>
 </div>

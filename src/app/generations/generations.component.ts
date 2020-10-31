@@ -12,7 +12,9 @@ export class GenerationsComponent implements OnInit {
   constructor(private poketraderAPI: PoketraderApiService) {}
 
   ngOnInit(): void {
-    this.generations = this.poketraderAPI.getGenerations();
+    this.poketraderAPI
+      .getGenerations()
+      .subscribe((res: any) => (this.generations = res.data));
   }
 
   public adjustGenerationName(prevName: string): string {

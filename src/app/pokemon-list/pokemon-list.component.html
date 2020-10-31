@@ -1,25 +1,35 @@
-<div *ngFor="let pokemon of pokemons">
-  <button (click)="addToPlayer(1, pokemon)">You</button>
-  <button (click)="addToPlayer(2, pokemon)">Other Player</button>
-  <img [src]="pokemon.sprite">
-  <div>Name: {{ pokemon.name | titlecase }}</div>
-  <div>Base Experience {{ pokemon.baseExperience }}</div>
-</div>
-
-<div>
-  YOU
-  <div>
-    <div *ngFor="let pokemon of selectedPokemonsP1">
-      <img (click)="removePokemonFromTrade(pokemon, 1)" [src]="pokemon.sprite">
-    </div>
-  </div>
-  OTHER PLAYER
-  <div>
-    <div *ngFor="let pokemon of selectedPokemonsP2">
-      <img (click)="removePokemonFromTrade(pokemon, 2)" [src]="pokemon.sprite">
+<div style="height: 70%;" class="flex-col inline-flex justify-center items-center overflow-y-scroll scrolling-auto scroll mt-64 pr-8">
+  <div style="height: 300px;">
+    <div *ngFor="let pokemon of pokemons" class="my-2">
+      <div class="inline-flex w-full justify-between">
+        <button class="text-indigo-500 hover:underline" (click)="addToPlayer(1, pokemon)">You</button>
+        <button class="text-yellow-500 hover:underline" (click)="addToPlayer(2, pokemon)">Other Player</button>
+      </div>
+      <img [src]="pokemon.sprite">
+      <div class="text-grey-500 font-bold">{{ pokemon.name | titlecase }}</div>
+      <div>Base Experience: {{ pokemon.baseExperience }}</div>
     </div>
   </div>
 </div>
-<div>{{ isFair }}</div>
-<button (click)="checkTrade()">Check Trade</button>
-<button (click)="trade()">Trade</button>
+<div class="left-0 top-0 fixed mt-64 ml-64 text-6xl"
+ [ngClass]="{ 'text-yellow-500': !isFair, 'text-indigo-500': isFair }">{{ isFair ? 'FAIR' : 'FAIL' }}</div>
+ <div class="right-0 top-0 fixed mt-64 mr-8 pr-6">
+  <div>
+    <p class="text-indigo-500 font-bold">YOU</p>
+    <div class="inline-flex flex-row">
+      <div *ngFor="let pokemon of selectedPokemonsP1">
+        <img (click)="removePokemonFromTrade(pokemon, 1)" [src]="pokemon.sprite">
+      </div>
+    </div>
+    <p class="text-yellow-500 font-bold">OTHER PLAYER</p>
+    <div class="inline-flex flex-row">
+      <div *ngFor="let pokemon of selectedPokemonsP2">
+        <img (click)="removePokemonFromTrade(pokemon, 2)" [src]="pokemon.sprite">
+      </div>
+    </div>
+  </div>
+  <div class="inline-flex flex-col p-2">
+    <button class="text-white border-2 border-indigo-500 bg-yellow-500 rounded-lg p-2 font-bold m-2" (click)="checkTrade()">Check Trade</button>
+    <button *ngIf="isFair" class="text-white border-2 border-indigo-500 bg-yellow-500 rounded-lg p-2 font-bold text-2xl" (click)="trade()">Trade!</button>
+  </div>
+</div>

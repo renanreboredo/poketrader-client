@@ -35,9 +35,9 @@ export class PokemonListComponent implements OnInit {
   }
 
   addToPlayer(player: number, pokemon) {
-    if (player === 1) {
+    if (player === 1 && this.selectedPokemonsP1.length < 6) {
       this.selectedPokemonsP1 = [...this.selectedPokemonsP1, pokemon];
-    } else {
+    } else if(player === 2 && this.selectedPokemonsP2.length < 6) {
       this.selectedPokemonsP2 = [...this.selectedPokemonsP2, pokemon];
     }
   }

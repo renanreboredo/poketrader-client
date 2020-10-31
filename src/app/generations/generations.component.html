@@ -1,3 +1,9 @@
-<div *ngFor="let generation of generations">
-  <a [routerLink]="['/generation', generation.id]">{{ adjustGenerationName(generation.name) }}</a>
+<div class="flex justify-center items-center flex-col w-full center mt-32">
+  <div class="text-indigo-500 my-8">Choose a generation* to make a trade</div>
+
+  <div *ngFor="let generation of generations">
+    <a class="text-yellow-500 font-bold hover:text-indigo-500" [routerLink]="['/generation', generation.id]">{{ adjustGenerationName(generation.name) }}</a>
+  </div>
+
+  <small class="text-indigo-500 my-8">*Unfortunatelly, this version can't make trades inter-generations</small>
 </div>

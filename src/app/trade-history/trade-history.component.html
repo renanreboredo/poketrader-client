@@ -1,18 +1,24 @@
-<div *ngFor="let entry of history; index as i">
-  <p>Entry Nº {{ i + 1 }}</p>
-  <div> {{ localeString(entry.createdOn) }} </div>
-  <div> 
-    Pokemons OUT
-    <div *ngFor="let pokemon of entry.pokemonsOut">
-      <img [src]="pokemon.sprite">
-      <div>{{ pokemon.name | titlecase }}</div>
+<div style="width: 50rem; height: 600px; top: 20%;" class="fixed top-0 left-0 ml-64 pl-32 overflow-y-scroll scrolling-auto scroll pr-2 flex flex-col">
+  <div style="height: 100%;" *ngFor="let entry of history; index as i">
+    <p class="font-bold text-grey-500">Entry Nº {{ i + 1 }}</p>
+    <div> {{ localeString(entry.createdOn) }} </div>
+    <div>
+      <div class="text-yellow-500 font-bold">Pokemons OUT</div>
+      <div class="inline-flex flex-row">
+        <div *ngFor="let pokemon of entry.pokemonsOut">
+          <img [src]="pokemon.sprite">
+          <div>{{ pokemon.name | titlecase }}</div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div> 
-    Pokemons IN
-    <div *ngFor="let pokemon of entry.pokemonsIn">
-      <img [src]="pokemon.sprite">
-      <div>{{ pokemon.name | titlecase }}</div>
+    <div>
+      <div class="text-indigo-500 font-bold">Pokemons IN</div>
+      <div class="inline-flex flex-row">
+        <div *ngFor="let pokemon of entry.pokemonsIn">
+          <img [src]="pokemon.sprite">
+          <div>{{ pokemon.name | titlecase }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

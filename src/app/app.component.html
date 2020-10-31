@@ -1,4 +1,9 @@
-<a routerLink='generation'>Generation List</a>
-<a routerLink='history'>History</a>
-<a *ngIf="user | async" (click)="logout()">Logout</a>
-<router-outlet></router-outlet>
+<div class="flex justify-center items-center flex-col w-full w-64 h-64 center">
+  <a routerLink="history" class="fixed top-0 left-0 text-2xl ml-8 mt-2 text-yellow-500 hover:underline" *ngIf="user | async">History</a>
+  <a class="fixed top-0 right-0 text-2xl mr-8 mt-2 text-indigo-500 hover:underline cursor-pointer" *ngIf="user | async" (click)="logout()">Logout</a>
+  <img routerLink="generation" class="fixed top-0 h-24 mt-6" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" alt="">
+  <div class="mt-48">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

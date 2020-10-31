@@ -7,16 +7,19 @@
 </div>
 
 <div>
-  Selected Player 1
+  YOU
   <div>
     <div *ngFor="let pokemon of selectedPokemonsP1">
   <img [src]="pokemon.sprite">
     </div>
   </div>
-  Selected Player 2
+  OTHER PLAYER
   <div>
     <div *ngFor="let pokemon of selectedPokemonsP2">
   <img [src]="pokemon.sprite">
     </div>
   </div>
 </div>
+<div>{{ isFair }}</div>
+<button (click)="checkTrade()">Check Trade</button>
+<button (click)="trade()">Trade</button>

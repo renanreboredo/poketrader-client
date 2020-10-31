@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { PoketraderApiService } from '../poketrader-api.service';
 
 @Component({
@@ -8,10 +9,10 @@ import { PoketraderApiService } from '../poketrader-api.service';
 })
 export class TradeHistoryComponent implements OnInit {
   history: any[];
-  constructor(private pokeapiService: PoketraderApiService) {}
+  constructor(private pokeapiService: PoketraderApiService, private authService: AuthService) {}
 
   ngOnInit(): void {
-    const userID = '5f9c7e5ccb49543db3c90656';
+    const userID = this.authService.currentUserValue.userID;
     this.pokeapiService
       .tradeHistory(userID)
       .subscribe((res: any) => (this.history = res.data));

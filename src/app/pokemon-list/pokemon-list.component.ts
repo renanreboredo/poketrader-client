@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { PoketraderApiService } from '../poketrader-api.service';
 
 @Component({
@@ -12,12 +13,16 @@ export class PokemonListComponent implements OnInit {
 
   id: number;
 
+  isFair = false;
+
   selectedPokemonsP1 = [];
   selectedPokemonsP2 = [];
 
   constructor(
     private route: ActivatedRoute,
-    private pokeapiService: PoketraderApiService
+    private router: Router,
+    private pokeapiService: PoketraderApiService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -35,5 +40,21 @@ export class PokemonListComponent implements OnInit {
     } else {
       this.selectedPokemonsP2 = [...this.selectedPokemonsP2, pokemon];
     }
+  }
+
+  trade() {
+    const userID = this.authService.currentUserValue.userID;
+    this.pokeapiService.trade(this.selectedPokemonsP1, this.selectedPokemonsP2, userID).subscribe((res: any) => {
+      if (res.message === 'Success') {
+        this.router.navigateByUrl('history');
+      }
+    });
+  }
+
+  checkTrade() {
+    const userID = this.authService.currentUserValue.userID;
+    this.pokeapiService.isFairTrade(this.selectedPokemonsP1, this.selectedPokemonsP2).subscribe((res: any) => {
+      this.isFair = res.message === 'Success';
+    });
   }
 }

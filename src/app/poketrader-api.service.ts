@@ -65,6 +65,6 @@ export class PoketraderApiService {
   }
 
   public tradeHistory(userID: string) {
-    return this.http.get(`${this.BASE_API_URL}/trade/${userID}`);
+    return this.http.get(`${this.BASE_API_URL}/trade/${userID}`, this.httpOptions);
   }
 }

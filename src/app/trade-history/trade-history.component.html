@@ -1,0 +1,18 @@
+<div *ngFor="let entry of history; index as i">
+  <p>Entry Nº {{ i + 1 }}</p>
+  <div> {{ localeString(entry.createdOn) }} </div>
+  <div> 
+    Pokemons OUT
+    <div *ngFor="let pokemon of entry.pokemonsOut">
+      <img [src]="pokemon.sprite">
+      <div>{{ pokemon.name | titlecase }}</div>
+    </div>
+  </div>
+  <div> 
+    Pokemons IN
+    <div *ngFor="let pokemon of entry.pokemonsIn">
+      <img [src]="pokemon.sprite">
+      <div>{{ pokemon.name | titlecase }}</div>
+    </div>
+  </div>
+</div>

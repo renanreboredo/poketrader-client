@@ -1,27 +1,55 @@
-# PoketraderClient
+# Projeto: Poke Trader
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+### Requisitos:
+Sua tarefa é construir uma calculadora de trades de pokemon, para que o usuário possa calcular se
+uma troca é "justa" ou não. Na API descrita abaixo você vai encontrar uma vasta base de
+conhecimento sobre pokemon. Uma sugestão seria usar o valor do “base_experience” como forma a
+chegar em um valor numérico de justiça.
+Uma troca consiste em dois jogadores ofertarem entre 1 e 6 pokemons de cada lado. Qualquer
+combinação é válida. Por exemplo, trocar 2 pokemons iguais por 4 pokemons distintos.
+Uma troca é considerada justa, se a soma dos “base_experience” dos pokemons de cada lado da
+troca é próxima uma da outra. O critério de “próximo” é aberto a sua definição.
 
-## Development server
+## Sua tarefa é:
+- Permitir que o jogador monte uma troca combinando pokemons dos dois lados
+- O sistema o informe se a mesma é justa ou não
+- Permitir persistir e visualizar o histórico de trocas registradas junto com seus dados
+relevantes
+Para esta tarefa, vamos utilizar a [PokeAPI](https://pokeapi.co/docs/v2)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Critérios:
+- Minha avaliação é baseada na escrita do seu código e na forma como você desenvolve a
+solução. Use seu código para me apresentar como você desenvolve seu raciocínio e resolve
+o problema apresentado.
+- Não está sendo avaliada a extensão do seu conhecimento sobre bibliotecas, sintaxe ou da
+tecnologia utilizada. Dessa forma, não se preocupe em me mostrar quanto você conhece a
+ferramenta, mas sim como você a utiliza.
+- A solução pode ser desenvolvida na plataforma ou linguagem em que se sentir mais
+confortável. Na bx a maior parte da nossa stack é Ruby on Rails, React.js e MongoDB. Mas
+isso não deve guiar seu exercício. Pois, caso não tenha familiaridade com a plataforma,
+teremos espaço para seu aprendizado e desenvolvimento durante o trabalho.
 
-## Code scaffolding
+# Solução
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Rodando o projeto
 
-## Build
+Para poder rodar a aplicação, é necessário ter o ```nodejs``` e o ```npm``` instalados em sua máquina.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Para rodar a aplicação basta rodar o comando:
 
-## Running unit tests
+```sh
+npm run start:dev
+```
+após ter feito a instalação das bibliotecas utilizando o ```npm```.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Informações importantes
 
-## Running end-to-end tests
+### Usuário com histórico
+- username: user
+- password: pass
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Usuário vazio
+- username: new
+- password: user
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ps. É possível cadastrar novos usuários pela API, mas não temos essa opção na aplicação atualmente. A decisão foi para priorizar funções mais importantes e críticas no app.

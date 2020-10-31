@@ -10,13 +10,13 @@
   YOU
   <div>
     <div *ngFor="let pokemon of selectedPokemonsP1">
-  <img [src]="pokemon.sprite">
+      <img (click)="removePokemonFromTrade(pokemon, 1)" [src]="pokemon.sprite">
     </div>
   </div>
   OTHER PLAYER
   <div>
     <div *ngFor="let pokemon of selectedPokemonsP2">
-  <img [src]="pokemon.sprite">
+      <img (click)="removePokemonFromTrade(pokemon, 2)" [src]="pokemon.sprite">
     </div>
   </div>
 </div>

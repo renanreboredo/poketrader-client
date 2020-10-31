@@ -1,3 +1,4 @@
 <a routerLink='generation'>Generation List</a>
 <a routerLink='history'>History</a>
+<a *ngIf="user | async" (click)="logout()">Logout</a>
 <router-outlet></router-outlet>

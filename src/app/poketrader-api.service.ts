@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 export interface Pokemon {
   id: number;
@@ -23,15 +23,23 @@ export interface Pokemon {
 })
 export class PoketraderApiService {
   private BASE_API_URL = 'https://api-poketrader.herokuapp.com';
+  user = this.authService.currentUserValue;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.user.access_token
+    })
+  };
 
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   public getGenerations() {
-    return this.http.get(`${this.BASE_API_URL}/trade/generation`);
+    return this.http.get(`${this.BASE_API_URL}/trade/generation`, this.httpOptions);
   }
 
   public getPokemonsFromGeneration(id: number) {
-    return this.http.get(`${this.BASE_API_URL}/trade/generation/${id}/pokemon`);
+    return this.http.get(`${this.BASE_API_URL}/trade/generation/${id}/pokemon`, this.httpOptions);
   }
 
   public isFairTrade(
@@ -41,7 +49,7 @@ export class PoketraderApiService {
     return this.http.post(`${this.BASE_API_URL}/trade/fair`, {
       pokemonsFromPlayer1,
       pokemonsFromPlayer2,
-    });
+    }, this.httpOptions);
   }
 
   public trade(
@@ -53,7 +61,7 @@ export class PoketraderApiService {
       pokemonsFromPlayer1,
       pokemonsFromPlayer2,
       userID,
-    });
+    }, this.httpOptions);
   }
 
   public tradeHistory(userID: string) {
